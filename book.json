@@ -1,0 +1,26 @@
+{
+    "title": "cs note",
+    "description": "cs note",
+    "author": "devinXing",
+    "language": "zh-hans",
+    "plugins": [
+        "code",
+        "-lunr",
+        "-search",
+        "search-pro",
+        "expandable-chapters-small",
+        "back-to-top-button",
+        "hide-element",
+        "-sharing"
+    ],
+    "pluginsConfig": {
+        "code": {
+            "copyButtons": true
+        },
+        "hide-element": {
+            "elements": [
+                ".gitbook-link"
+            ]
+        }
+    }
+}
