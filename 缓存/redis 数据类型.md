@@ -1,0 +1,167 @@
+### redis五种数据类型
+1. String（字符串）
+2. List（列表）
+3. Hash（字典）
+4. Set（集合）
+5. Sorted Set（有序集合）
+
+### String（字符串）
+String是简单的 key-value 键值对，value 不仅可以是 String，也可以是数字。String在redis内部存储默认就是一个字符串，被redisObject所引用，当遇到incr,decr等操作时会转成数值型进行计算，此时redisObject的encoding字段为int。
+
+String在redis内部存储默认就是一个字符串，被redisObject所引用，当遇到incr,decr等操作时会转成数值型进行计算，此时redisObject的encoding字段为int。
+
+#### 应用场景
+String是最常用的一种数据类型，普通的key/value存储都可以归为此类，这里就不所做解释了
+```shell
+set a 1 #return OK
+get a # "1"
+exists a # (integer)1
+del a # (interger)1
+```
+
+### List（列表）
+Redis列表是简单的字符串列表，可以类比到C++中的std::list，简单的说就是一个链表或者说是一个队列。可以从头部或尾部向Redis列表添加元素。列表的最大长度为2^32 - 1，也即每个列表支持超过40亿个元素。
+
+Redis list的实现为一个双向链表，即可以支持反向查找和遍历，更方便操作，不过带来了部分额外的内存开销，Redis内部的很多实现，包括发送缓冲队列等也都是用的这个数据结构。
+
+#### 应用场景
+Redis list的应用场景非常多，也是Redis最重要的数据结构之一，比如twitter的关注列表、粉丝列表等都可以用Redis的list结构来实现，再比如有的应用使用Redis的list类型实现一个简单的轻量级消息队列，生产者push，消费者pop/bpop。
+```shell
+lpush l redis # (integer)1
+lpush l hello
+rpush l world
+lrange l 0 3 # 1) "hello"
+			 # 2) "redis"
+			 # 3) "world"
+lpop l # "hello"
+rpop l # "world"
+del l # (integer)1
+```
+
+### 3. Hash（字典，哈希表）
+类似C#中的dict类型或者C++中的hash_map类型。
+
+Redis Hash对应Value内部实际就是一个HashMap，实际这里会有2种不同实现，这个Hash的成员比较少时Redis为了节省内存会采用类似一维数组的方式来紧凑存储，而不会采用真正的HashMap结构，对应的value redisObject的encoding为zipmap,当成员数量增大时会自动转成真正的HashMap,此时encoding为ht。
+
+#### 应用场景
+假设有多个用户及对应的用户信息，可以用来存储以用户ID为key，将用户信息序列化为比如json格式做为value进行保存。
+```shell
+hset person name jack # (integer)1
+hset person age 20
+hset person sex famale
+hgetall person  # 1) "name"
+				# 2) "jack"
+				# 3) "age"
+				# 4) "20"
+				# 5) "sex"
+				# 6) "famale"
+hkeys person
+# 1) "name"
+# 2) "age"
+# 3) "sex"
+hvals person
+# 1) "jack"
+# 2) "20"
+# 3) "famale"
+hget person name # "jack"
+```
+### Set（集合）
+可以理解为一堆值不重复的列表，类似数学领域中的集合概念，且Redis也提供了针对集合的求交集、并集、差集等操作。
+
+set 的内部实现是一个 value永远为null的HashMap，实际就是通过计算hash的方式来快速排重的，这也是set能提供判断一个成员是否在集合内的原因。
+
+#### 应用场景
+Redis set对外提供的功能与list类似是一个列表的功能，特殊之处在于set是可以自动排重的，当你需要存储一个列表数据，又不希望出现重复数据时，set是一个很好的选择，并且set提供了判断某个成员是否在一个set集合内的重要接口，这个也是list所不能提供的。
+
+又或者在微博应用中，每个用户关注的人存在一个集合中，就很容易实现求两个人的共同好友功能。
+```shell
+sadd s hello # (integer)1
+sadd s world
+smembers s
+# 1) "world"
+# 2) "hello"
+sadd s one
+sismember s one # (integer)1
+sismember s two # (integer)0
+sadd s2 one
+sadd s2 two
+sadd s2 world
+sinter s s2
+# 1) "one"
+# 2) "world"
+sinterstore ss2 s s2 # (integer)2 交集
+sdiff s s2 # "hello" 获取s2中不存在的元素 sdiffstore同上 差集
+spop s2 1 # "one" 删除第一个元素
+sunion s s2 # 并集
+# 1) "one"
+# 2) "two"
+# 3) "hello"
+# 4) "world"
+```
+
+### Sorted Set（有序集合）
+Redis有序集合类似Redis集合，不同的是增加了一个功能，即集合是有序的。一个有序集合的每个成员带有分数，用于进行排序。
+
+Redis有序集合添加、删除和测试的时间复杂度均为O(1)(固定时间，无论里面包含的元素集合的数量)。列表的最大长度为2^32- 1元素(4294967295，超过40亿每个元素的集合)。
+
+Redis sorted set的内部使用HashMap和跳跃表(SkipList)来保证数据的存储和有序，HashMap里放的是成员到score的映射，而跳跃表里存放的是所有的成员，排序依据是HashMap里存的score,使用跳跃表的结构可以获得比较高的查找效率，并且在实现上比较简单。
+
+#### 使用场景
+Redis sorted set的使用场景与set类似，区别是set不是自动有序的，而sorted set可以通过用户额外提供一个优先级(score)的参数来为成员排序，并且是插入有序的，即自动排序。当你需要一个有序的并且不重复的集合列表，那么可以选择sorted set数据结构，比如twitter 的public timeline可以以发表时间作为score来存储，这样获取时就是自动按时间排好序的。
+
+又比如用户的积分排行榜需求就可以通过有序集合实现。还有上面介绍的使用List实现轻量级的消息队列，其实也可以通过Sorted Set实现有优先级或按权重的队列。
+1. 向有序集合中添加（多个）元素和分值
+```shell
+zadd test 1 redis
+zadd test 2 mysql 3 php
+```
+2. 遍历有序集合
+```shell
+# start 0 第一个成员  stop -1 最后一个成员 withscores 携带分数
+zrange test 0 -1 scores
+zrange test 0 -1 withscores
+zrevrange test 0 -1 withscores
+```
+3. 根据分数范围排序
+```shell
+zrangebyscore test 2 4
+zrange by score test 2 4 withscores
+```
+4. 获取有序集合成员数
+```shell
+zcard test
+```
+5. 对集合中元素进行加减
+```shell
+zincrby test 3 redis
+zincrby test -1 mysql
+```
+6. 返回有序集合中指定成员索引
+```shell
+zrank test redis
+```
+7. 返回有序集合中指定成员分数
+```shell
+zscore test redis
+```
+8. 单个用户点赞数实现
+```shell
+#点赞
+zincrby articleID 1 userID
+#取消点赞
+zincrby articleID -1 userID
+#点赞统计
+zcard articleID
+```
+9. 点赞排行设计与实现
+```shell
+#新建集合A，里面存储文章ID和点赞数
+#当单个文章点赞数发生变化时，同步更新A里面的点赞数
+#然后实时计算top就行了，比如top100
+zrevrange test 0 99 withscores
+```
+
+
+
+### Reference
+[https://redis.io/commands](https://redis.io/commands "https://redis.io/commands")
