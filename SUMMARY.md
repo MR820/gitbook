@@ -59,7 +59,14 @@
   *  [应用](缓存/应用.md) 
   *  [主从同步](缓存/主从同步.md) 
 * 队列
-  * [前言](队列/README.md) 
+  *  [kafka基础使用](队列/kafka基础使用.md) 
+  *  [kafka集群搭建](队列/kafka集群搭建.md) 
+  *  [kafka问题精选](队列/kafka问题精选.md) 
+  *  [mq常见问题](队列/mq常见问题.md) 
+  *  [mq常见问题及解决方案](队列/mq常见问题及解决方案.md) 
+  *  [php安装kfka扩展](队列/php安装kfka扩展.md) 
+  *  [php整合kafka](队列/php整合kafka.md) 
+  *  [rabbitmq](队列/rabbitmq.md) 
 * [算法](算法) 
   *  [每日一题](算法/每日一题.md) 
 
