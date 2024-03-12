@@ -67,5 +67,46 @@ func longestConsecutive(nums []int) int {
 ## 4. [移动零](https://leetcode.cn/problems/move-zeroes/)
 
 ```go
+func moveZeroes(nums []int) {
+	if len(nums) < 2 {
+		return
+	}
+	j := 0
+	for i := 0; i < len(nums); i++ {
+		if nums[i] != 0 {
+			nums[j] = nums[i]
+			j++
+		}
+	}
+	for i := j; i < len(nums); i++ {
+		nums[i] = 0
+	}
+}
+
+```
+
+## 5. [盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/)
+
+```go
+func maxArea(height []int) int {
+	l, r := 0, len(height)-1
+	var maxA = 0
+	for l < r {
+		area := min(height[l], height[r]) * (r - l)
+		maxA = max(maxA, area)
+		if height[l] < height[r] {
+			l++
+		} else {
+			r--
+		}
+	}
+	return maxA
+}
+
+```
+
+## 6. [三数之和](https://leetcode.cn/problems/3sum/)
+
+```go
 ```
 
