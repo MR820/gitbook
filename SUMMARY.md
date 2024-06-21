@@ -29,19 +29,19 @@
   
 * mysql
   
-  * 1.基础
-    * [sql执行过程](mysql/sql执行过程.md) 
-  * 2.索引
+  * 一、基础
+    *  [1.1执行过程](mysql/1.1执行过程.md) 
+    *  [1.2存储过程](mysql/1.2存储过程.md) 
+  * 二、索引
     * [mysql索引](mysql/mysql索引.md) 
     * [mysql索引优化1](mysql/mysql索引优化1.md) 
     * [mysql索引优化2](mysql/mysql索引优化2.md) 
     * [mysql索引优化3](mysql/mysql索引优化3.md) 
-  * 3.事务
-  * 4.锁
+  * 三、事务
+  * 四、锁
     * [mysql锁详解](mysql/mysql锁详解.md) 
-  * 5.日志
-  * 6.内存
-  * [mysql存储过程](mysql/mysql存储过程.md) 
+  * 五、日志
+  * 六、内存
   * [mysql大表添加字段](mysql/mysql大表添加字段.md) 
   * [mysql分库分表](mysql/mysql分库分表.md) 
   * [mysql分区表](mysql/mysql分区表.md) 
