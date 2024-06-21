@@ -108,5 +108,181 @@ func maxArea(height []int) int {
 ## 6. [三数之和](https://leetcode.cn/problems/3sum/)
 
 ```go
+func threeSum(nums []int) [][]int {
+	n := len(nums)
+	sort.Ints(nums)
+	ans := make([][]int, 0)
+
+	for first := 0; first < n; first++ {
+		if first > 0 && nums[first] == nums[first-1] {
+			continue
+		}
+		third := n - 1
+		target := -1 * nums[first]
+		for second := first + 1; second < n; second++ {
+			if second > first+1 && nums[second] == nums[second-1] {
+				continue
+			}
+			for second < third && nums[second]+nums[third] > target {
+				third--
+			}
+			if second == third {
+				break
+			}
+			if nums[second]+nums[third] == target {
+				ans = append(ans, []int{nums[first], nums[second], nums[third]})
+			}
+		}
+	}
+	return ans
+}
+
 ```
+
+## 7. [接雨水](https://leetcode.cn/problems/trapping-rain-water/)
+
+```go
+func trap(height []int) int {
+	left, right := 0, len(height)-1
+	leftMax, rightMax := 0, 0
+	ans := 0
+	for left < right {
+		leftMax = max(leftMax, height[left])
+		rightMax = max(rightMax, height[right])
+		if height[left] < height[right] {
+			ans += leftMax - height[left]
+			left++
+		} else {
+			ans += rightMax - height[right]
+			right--
+		}
+	}
+	return ans
+}
+
+```
+
+# 滑动窗口
+
+## 8. [无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/)
+
+```go
+func lengthOfLongestSubstring(s string) int {
+	if len(s) == 0 {
+		return 0
+	}
+	start, end := 0, 0
+	m := make(map[byte]int)
+	m[s[end]] = end
+	maxLength := 1
+  l := len(s)-1
+	for end < l {
+		end++
+		if i, exit := m[s[end]]; exit {
+			if i >= start {
+				start = i + 1
+			}
+		}
+		m[s[end]] = end
+		maxLength = max(maxLength, end-start+1)
+	}
+	return maxLength
+}
+```
+
+## 9. [找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
+
+```go
+func findAnagrams(s string, p string) []int {
+	l := len(s)
+	n := len(p)
+	if l < n {
+		return nil
+	}
+	pList := make([]int, 26)
+	sList := make([]int, 26)
+	for i := 0; i < n; i++ {
+		pList[p[i]-'a']++
+		sList[s[i]-'a']++
+	}
+
+	res := make([]int, 0)
+	if equal(pList, sList) {
+		res = append(res, 0)
+	}
+
+	for start := 0; start < l-n; start++ {
+		sList[s[start]-'a']--
+		end := start + n
+		sList[s[end]-'a']++
+		if equal(sList, pList) {
+			res = append(res, start+1)
+		}
+	}
+	return res
+}
+
+func equal(a, b []int) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := uint8(0); i < 26; i++ {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
+```
+
+## 10. [和为 K 的子数组](https://leetcode.cn/problems/subarray-sum-equals-k/)
+
+```go
+func subarraySum(nums []int, k int) int {
+	count, pre := 0, 0
+	m := map[int]int{}
+	m[0] = 1
+	for i := 0; i < len(nums); i++ {
+		pre += nums[i]
+		if _, ok := m[pre-k]; ok {
+			count += m[pre-k]
+		}
+		m[pre]++
+	}
+	return count
+}
+```
+
+## 11. [滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum/)
+
+```go
+func maxSlidingWindow(nums []int, k int) []int {
+	q := []int{}
+	push := func(i int) {
+		for len(q) > 0 && nums[i] >= nums[q[len(q)-1]] {
+			q = q[:len(q)-1]
+		}
+		q = append(q, i)
+	}
+	for i := 0; i < k; i++ {
+		push(i)
+	}
+
+	n := len(nums)
+	ans := make([]int, 1, n-k+1)
+	ans[0] = nums[q[0]]
+	for i := k; i < n; i++ {
+		push(i)
+		for q[0] <= i-k {
+			q = q[1:]
+		}
+		ans = append(ans, nums[q[0]])
+	}
+	return ans
+}
+
+```
+
+## 12. [最小覆盖子串](https://leetcode.cn/problems/minimum-window-substring/)
 

@@ -28,16 +28,13 @@
   * [websocket](网络/websocket.md) 
   
 * mysql
-  *  [mysql安装](mysql/mysql安装.md) 
   *  [mysql查询优化](mysql/mysql查询优化.md) 
   *  [mysql存储过程](mysql/mysql存储过程.md) 
   *  [mysql大表添加字段](mysql/mysql大表添加字段.md) 
   *  [mysql分库分表](mysql/mysql分库分表.md) 
   *  [mysql分区表](mysql/mysql分区表.md) 
   *  [mysql分页优化](mysql/mysql分页优化.md) 
-  *  [mysql封装类](mysql/mysql封装类.md) 
   *  [mysql关联查询](mysql/mysql关联查询.md) 
-  *  [mysql数据导出为excel](mysql/mysql数据导出为excel.md) 
   *  [mysql索引](mysql/mysql索引.md) 
   *  [mysql索引优化1](mysql/mysql索引优化1.md) 
   *  [mysql索引优化2](mysql/mysql索引优化2.md) 
