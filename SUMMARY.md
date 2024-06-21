@@ -39,43 +39,35 @@
     * [mysql索引优化3](mysql/mysql索引优化3.md) 
   * 三、事务
   * 四、锁
-    * [mysql锁详解](mysql/mysql锁详解.md) 
+    -  [4.1锁详解](mysql/4.1锁详解.md) 
   * 五、日志
-  * 六、内存
-  * [mysql大表添加字段](mysql/mysql大表添加字段.md) 
-  * [mysql分库分表](mysql/mysql分库分表.md) 
-  * [mysql分区表](mysql/mysql分区表.md) 
-  * [mysql分页优化](mysql/mysql分页优化.md) 
-  * [mysql关联查询](mysql/mysql关联查询.md) 
-  * [mysql问题精选](mysql/mysql问题精选.md) 
-  * [mysql与mongodb](mysql/mysql与mongodb.md) 
-  * [mysql主从复制](mysql/mysql主从复制.md) 
   
-* 缓存
-  *  [本地缓存](缓存/本地缓存.md) 
-  *  [常见问题](缓存/常见问题.md) 
-  *  [常见问题及解决方案](缓存/常见问题及解决方案.md) 
-  *  [封装类](缓存/封装类.md)  
-  *  [缓存策略](缓存/缓存策略.md) 
-  *   [缓存一致性问题](缓存/缓存一致性问题.md) 
-  *  [实现锁](缓存/实现锁.md) 
-  *  [数据类型](缓存/数据类型.md) 
-  *  [问题精选](缓存/问题精选.md) 
-  *  [特殊数据类型](缓存/特殊数据类型.md) 
-  *  [应用](缓存/应用.md) 
-  *  [主从同步](缓存/主从同步.md) 
-
-* 队列
+* redis
+  
+  * 一、常见数据结构
+    *  [1.1数据类型](redis/1.1数据类型.md)  
+    * [1.2特殊数据类型](redis/1.2特殊数据类型.md) 
+  * 二、线程模型
+    * 
+  * 三、持久化
+    *  [3.2主从同步](redis/3.2主从同步.md) 
+  * 四、锁
+    *  [4.1实现锁](redis/4.1实现锁.md) 
+  * 五、淘汰策略
+    * 
+  * 六、缓存一致性
+    *  [6.1缓存一致性问题](redis/6.1缓存一致性问题.md)  
+    *  [6.2缓存策略](redis/6.2缓存策略.md) 
+  
+* kafka
+  
   *  [消息幂等通用方案](队列/消息幂等通用方案.md) 
   * [kafka基础使用](队列/kafka基础使用.md) 
   * [kafka集群搭建](队列/kafka集群搭建.md) 
   * [kafka问题精选](队列/kafka问题精选.md) 
   * [mq常见问题](队列/mq常见问题.md) 
   * [mq常见问题及解决方案](队列/mq常见问题及解决方案.md) 
-  * [php安装kfka扩展](队列/php安装kfka扩展.md) 
-  * [php整合kafka](队列/php整合kafka.md) 
-  * [rabbitmq](队列/rabbitmq.md) 
-
+  
 * [算法](算法) 
   * [每日一题202312](算法/每日一题202312.md) 
 
