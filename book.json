@@ -1,26 +1,29 @@
-{
-    "title": "cs note",
-    "description": "cs note",
-    "author": "devinXing",
-    "language": "zh-hans",
-    "plugins": [
-        "code",
-        "-lunr",
-        "-search",
-        "search-pro",
-        "expandable-chapters-small",
-        "back-to-top-button",
-        "hide-element",
-        "-sharing"
-    ],
-    "pluginsConfig": {
-        "code": {
-            "copyButtons": true
-        },
-        "hide-element": {
-            "elements": [
-                ".gitbook-link"
-            ]
-        }
-    }
-}
+Host: app.dewu.com
+isRoot: 0
+emu: 0
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/duapp/5.44.1
+deviceTrait: iPhone
+cookieToken: d41d8cd9|118464444|1632472389|1e0da4b1d1aae496
+appid: h5
+isProxy: 0
+Cookie: duToken=d41d8cd9|118464444|1632472389|1e0da4b1d1aae496; x-auth-token=Bearer eyJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MTkwNDA4ODEsImV4cCI6MTc1MDU3Njg4MSwiaXNzIjoiVVVJRDgxNmQ1YmMzNWMyNjRlZjg5OTk2MDJjMmMxODEzZjdiIiwic3ViIjoiVVVJRDgxNmQ1YmMzNWMyNjRlZjg5OTk2MDJjMmMxODEzZjdiIiwidXVpZCI6IlVVSUQ4MTZkNWJjMzVjMjY0ZWY4OTk5NjAyYzJjMTgxM2Y3YiIsInVzZXJJZCI6MTE4NDY0NDQ0LCJ1c2VyTmFtZSI6IuaZk-WiqCblrociLCJpc0d1ZXN0IjpmYWxzZX0.AOf9oDX1zEnn2lYfxkFiOkoEzQRYxi47zRIOjmiYhW5tH-a7Ypr1HCQNr1Ab0soxTQOa3ZwBEqsgaHPMoBIc4n4ZIlF8kkz6P_KKRQGWnqupw4GKeJG8q0PsESNfdVmCcLL1NjLpQfQ3xJV4Bwk0jLIrzbo288S6GBueXqDUtHn9eEgzoR8urLQgzaH_5Hq03SfttqHrQwNgk6j3_bpOok8rs8SBQDA6qxGUXa0JmXS8k2kymKJp9MpdICld1IYRZZ0g5iG-Rc3FFNOYNR30mcmssVoJ18tr-_4d3ZOUn8A-f5lZ6l1Xq0x9BS5oUAIdIvvYNVoJGC3E7ge2kIworA
+Referer: https://cdn-m.dewu.com/
+imei: 
+channel: App Store
+appVersion: 5.44.1
+ua: Mozilla/5.0 (iPhone; CPU iPhone OS 17_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/duapp/5.44.1
+Origin: https://cdn-m.dewu.com
+Sec-Fetch-Dest: empty
+shumeiId: 20190905220348d5aadce8b6725e2769e79d4aa3cc3c62010243e9d5ece26d
+duid: 7ee52e9f05844bfb915cbc94ed0aba18f7d4882f5f3842daee66791bdb8beb12d1f1c056519076cd1f18077e038b46fb
+Sec-Fetch-Site: same-site
+x-auth-token: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MTkwNDA4ODEsImV4cCI6MTc1MDU3Njg4MSwiaXNzIjoiVVVJRDgxNmQ1YmMzNWMyNjRlZjg5OTk2MDJjMmMxODEzZjdiIiwic3ViIjoiVVVJRDgxNmQ1YmMzNWMyNjRlZjg5OTk2MDJjMmMxODEzZjdiIiwidXVpZCI6IlVVSUQ4MTZkNWJjMzVjMjY0ZWY4OTk5NjAyYzJjMTgxM2Y3YiIsInVzZXJJZCI6MTE4NDY0NDQ0LCJ1c2VyTmFtZSI6IuaZk-WiqCblrociLCJpc0d1ZXN0IjpmYWxzZX0.AOf9oDX1zEnn2lYfxkFiOkoEzQRYxi47zRIOjmiYhW5tH-a7Ypr1HCQNr1Ab0soxTQOa3ZwBEqsgaHPMoBIc4n4ZIlF8kkz6P_KKRQGWnqupw4GKeJG8q0PsESNfdVmCcLL1NjLpQfQ3xJV4Bwk0jLIrzbo288S6GBueXqDUtHn9eEgzoR8urLQgzaH_5Hq03SfttqHrQwNgk6j3_bpOok8rs8SBQDA6qxGUXa0JmXS8k2kymKJp9MpdICld1IYRZZ0g5iG-Rc3FFNOYNR30mcmssVoJ18tr-_4d3ZOUn8A-f5lZ6l1Xq0x9BS5oUAIdIvvYNVoJGC3E7ge2kIworA
+platform: h5
+Connection: keep-alive
+Accept-Language: zh-CN,zh-Hans;q=0.9
+SK: 9HA4NY0EERpYlK1os4rGnQDrW2Ru2YNZiFYSmh6KIDSKlb88AhFfPwLzLbwEJ4c8iEgEkrNsU6hOxufKqcssFtdiul1y
+Accept: */*
+traceparent: 00-f5f00dad6676847bf9f4696ee7da3ffb-e619b7145df03e4c-01
+duToken: d41d8cd9|118464444|1632472389|1e0da4b1d1aae496
+Accept-Encoding: gzip, deflate, br
+Sec-Fetch-Mode: cors
