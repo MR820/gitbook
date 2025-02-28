@@ -17,7 +17,7 @@ mke2fs /dev/loop0 #格式化
 
 ![](https://oss.wyxxt.org.cn/images/2021/09/18/wp_editor_md_1a23ab40e8abcce1a3632441376f0582.jpg)
 
-
+![image-20250228164029228](./assets/image-20250228164029228.png)
 
 df
 
